@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+    <style>
+
+        .container{
+        text-align:center;
+        font-family:'Trirong',serif;
+        }
+        body{
+        background-image:url("https://th.bing.com/th/id/OIP.DjSZpAGlVsMXM31FgyyjQQHaEK?pid=ImgDet&rs=1");
+        background-size:cover;
+         background-repeat:no-repeat;
+         }
+
+    </style>
+</head>
+
+{% load crispy_forms_tags %}
+{% load static %}
+<body>
+
+    <div class="container">
+        <h1>You have been Logged Out</h1>
+        <h4>Click here to <a href="{% url 'login' %}">Login in Again</a></h4>
+        <h4>Click here to <a href="{% url 'home' %}">Go to Start Page</a></h4>
+        <h1 style="padding:50px;"><b>THANK YOU!</b></h1>
+
+
+       <!-- <img src="https://media.makeameme.org/created/next-time-u-5de2c9be80.jpg" width="300" height="300">  -->
+    </div>
+
+
+</body>
+</html>

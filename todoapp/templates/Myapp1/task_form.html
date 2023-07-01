@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+{% include 'Myapp1/main.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>page</title>
+     <!--<link rel="stylesheet" href="{% static 'djangotodo/css/home.css' %}">-->
+<style>
+    body{
+    background-image:url("https://pace.oregonstate.edu/sites/default/files/styles/course_banner_large/public/images/course/cover/untitled_0.jpg?itok=NNr23iIa");
+    }
+label{
+display:inline-block;
+color: #1a1a1a;
+}
+
+</style>
+</head>
+<body>
+
+{% block content %}
+<h3 style="text-align:center; color:black;"><b>Create</b></h3>
+<form  style="text-align:center; padding:50px;" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+</form>
+    {% endblock content %}
+</body>
+</html>

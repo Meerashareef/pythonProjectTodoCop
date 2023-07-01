@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <title>TODO APP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <meta name="description"
+        content="This is to do list implemented using Django by Dennis Ivy who is a full stack web developer.">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+<style>
+
+
+ .dem{
+ list-style: none;
+		float: right;
+	}
+
+
+h2{
+text-align:center;
+font-family:'Trirong',serif;}
+.logg{
+text-align:center;
+}
+
+
+
+</style>
+
+</head>
+ <body>
+  {% load static %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-navbar">
+        <div class="container">
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <form class="d-flex" id="authstyle">
+                <div class="ifok">
+              {% if user.is_authenticated %}
+                    <div class="logg">
+                <a href="{% url 'task-create' %}" class="btn" style="color: white; background-color: royalblue;"type="submit" id="header-links"> Create</a>
+                <a href="{% url 'task' %}" class="btn" style="color: white; background-color: royalblue;"type="submit" id="header-links"> Tasks </a>
+              <a href="{% url 'logout' %}" class="btn" style="color: white; background-color: royalblue;"type="submit" id="header-links"> Logout </a>
+                </div>
+                    </div>
+              {% else %}
+               <div class="forimg">
+                   <h2>  My TODO APP</h2>
+               </div>
+
+              {% endif %}
+              </form>
+          </div>
+        </div>
+    </nav>
+
+      <div>
+        <div class="container">
+          {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+          {% endfor %}
+        {% endif %}
+
+        </div>
+        {% block content %}
+
+        {% endblock content %}
+      </div>
+</body>
+</html>

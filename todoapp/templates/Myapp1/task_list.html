@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+{% include 'Myapp1/main.html' %}
+<head>
+    <style>
+    body{
+    background-image:url("https://i.stack.imgur.com/3F0Va.png");
+    background-repeat:no-repeat;
+    }
+	.top{
+	background-color:#8AAAE5;
+	margin-bottom : 5%;
+
+   overflow: auto;
+   resize: both;
+   text-overflow: ellipsis;
+	}
+	.rem{
+		background-color:#FCEDDA;
+		margin-bottom : 5%;
+        overflow: auto;
+      resize: both;
+       text-overflow: ellipsis;;
+		}
+h1,h3{ color:grey;}
+h4{ color:black;
+ font-family:sans-serif;}
+ a{
+ color:black;
+}
+
+	</style>
+</head>
+<body>
+{% block content %}
+
+<div class="header-bar">
+    <div>
+        <h1>Hello..!, {{ request.user|title }}</h1>
+        <h3>You have <b> {{ count }} incomplete task{{ count|pluralize:'s' }}</b></h3>
+    </div>
+</div>
+    <!-- <a id="add-link" href="{% url 'task-create' %}">for task creation go to Home</a> -->
+<h3>for Task Creation go to Create</h3>
+</div>
+<div class="card-bdy">
+
+<div class="task-items-wrapper">
+    {% for tasks in task %}
+    <div class="task-wrapper">
+        {% if tasks.complete %}
+        <div class="task-title">
+            <div class="task-complete-icon"></div>
+             <div class="top">
+            <hr/><h5>{{tasks.datetime}}</h5>
+            <div class="rem">
+            <h4>Title: {{ tasks.title }}</h4><hr/>
+            <h4>{{tasks.description}}</h4><br/><br/>
+
+        <a class="btn" href="{% url 'tasks-delete' tasks.id %}">REMOVE</a>
+                </div></div>
+        {% else %}
+        <div class="task-title" style="padding:10px">
+            <div class="task-incomplete-icon" ></div>
+            <div class="top">
+            <h5>{{tasks.datetime}}</h5><hr/>
+            <div class="rem">
+            <h4>Title: {{ tasks.title }}</h4><hr/>
+            <h4>{{tasks.description}}</h4><br/><br/>
+                </div>
+
+        <a class="delete-link" href="{% url 'tasks-delete' tasks.id %}">REMOVE</a>
+            </div>
+            </div>
+        {% endif %}
+
+    </div>
+    {% empty %}
+    <h3>No items in list</h3>
+    <a href="{% url 'task-create' %}">Add New Item</a>
+    {% endfor %}
+
+</div>
+
+</div>
+</div>
+<!-- <table>
+    <tr>
+        <th>Items</th>
+    </tr>
+    {% for tasks in task %}
+    <tr>
+        <td>{{ tasks.id }}  -  {{tasks.title}}</td>
+        <td><a href="{% url 'tasks-detail' tasks.id %}">View</a></td>
+        <td><a href="{% url 'task-create' %}">Add</a></td>
+        <td><a href="{% url 'tasks-update' tasks.id %}">update</a></td>
+        <td><a href="{% url 'tasks-delete' tasks.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    <h3>No items in list</h3>
+    <a href="{% url 'task-create' %}">Add New Item</a>
+    {% endfor %}
+</table> -->
+{% endblock content %}
+</body>
+</html>

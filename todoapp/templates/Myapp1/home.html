@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website this</title>
+  <style>
+    /* Some basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image:url("https://img.freepik.com/free-vector/modern-polygon-technology-background_1035-17925.jpg?w=2000");
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #2980b9;
+    }
+    .link{
+    text-align:center;}
+    p{ text-align:center;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <h1>Let's Get Things Done Today</h1>
+      <p>I haven't been everywhere, but it's on my list</p>
+
+      <p><b>Please log in or create an account</b></p>
+      <div class="link">
+      <a href="{% url 'register' %}" class="button"> Create Account </a>
+
+      <a href="{% url 'login' %}" class="button">login</a>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
